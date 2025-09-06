@@ -9,13 +9,13 @@
     box-sizing: border-box;
 }
 
-body {
+/* body {
     padding: 0;
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-family: "Inter", sans-serif !important;
-}
+} */
 
 // Theme Colors
 $black: #464646;
@@ -93,11 +93,11 @@ $yellow: #FFEC00;
     margin-bottom: 1rem;
 }
 
-h1,
+/* h1,
 h2,
 h3 {
     font-family: "Piepie W01 Regular", sans-serif;
-}
+} */
 
 /* .section-navigation.navigationtitle {
     display: none !important;
@@ -105,13 +105,13 @@ h3 {
 
 
 // Recurso Página
-#page-mod-page-view {
+/* #page-mod-page-view {
     #page-content {
         h3 {
             color: $violet;
         }
     }
-}
+} */
 
 // Estilos de los Recursos - sin edición activa
 /* body:not(.editing) {
