@@ -1,7 +1,8 @@
 /* THEME STYLES */
 
 // Font import
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url(https://db.onlinewebfonts.com/c/f22b66fd8208f04c026f2ddd89468cb5?family=Piepie+W01+Regular);
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 // Normalize
 * {
     margin: 0;
@@ -13,7 +14,7 @@ body {
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-family: "Noto Sans", sans-serif !important;
+    font-family: "Inter", sans-serif !important;
 }
 
 // Theme Colors
@@ -22,14 +23,17 @@ $gray-1: #EFEFEF;
 $gray-2: #CBCBCB;
 $gray-3: #4E4F50;
 $white: #ffffff;
-$violet: #8A38F5;
-$dark-violet: #681DC9;
-$light-violet: #9C73FF;
-$green: #2ADD98;
-$dark-green: #28CB8D;
-$yellow: #FFBE1D;
+$blue: #0091FC;
+$violet: #A74CFB;
+$orange: #FF7F00;
+$pink: #FF22CC;
+$green: #00FF81;
+$light-green: #98FFE1;
+$yellow: #FFEC00;
+
+
 // Buttons
-@mixin button($variant: primary) {
+/* @mixin button($variant: primary) {
     box-sizing: border-box;
     font-weight: bold;
     text-decoration: none;
@@ -44,7 +48,7 @@ $yellow: #FFBE1D;
         box-shadow: none;
     }
     &:hover {
-        background-color: $dark-violet;
+        background-color: $violet;
     }
     &:active {
         transform: scale(.95);
@@ -62,7 +66,7 @@ $yellow: #FFBE1D;
             background-color: $gray-1;
         }
     }
-}
+} */
 
 // General Styles
 #page-content,
@@ -73,15 +77,15 @@ $yellow: #FFBE1D;
     width: 100%;
 }
 
-.back a {
+/* .back a {
     font-size: 0;
-}
+} */
 
-.back a::after {
+/* .back a::after {
     content: "← Volver";
     font-size: 1.2rem;
     font-weight: 500;
-}
+} */
 
 .destacado {
     background-color: #F4F1FF;
@@ -92,200 +96,13 @@ $yellow: #FFBE1D;
 h1,
 h2,
 h3 {
-    font-family: "Noto Sans", sans-serif;
+    font-family: "Piepie W01 Regular", sans-serif;
 }
 
-.section-navigation.navigationtitle {
+/* .section-navigation.navigationtitle {
     display: none !important;
-}
+} */
 
-#page-course-view-grid {
-    #page-content {
-        p.text-right {
-            text-align: left !important;
-            margin: 3rem 0;
-        }
-        p.text-right a {
-            font-size: 0;
-        }
-        .text-right a::after {
-            content: "← Volver";
-            font-size: 1.2rem;
-            font-weight: 500;
-        }
-        .btn-primary {
-            @include button(primary);
-        }
-        .btn-secondary {
-            @include button(secondary);
-        }
-        li.section {
-            .course-section-header {
-                h3 {
-                    a {
-                        font-size: 3rem;
-                        color: $dark-violet;
-                    }
-                }
-            }
-            .content {
-                h3 {
-                    font-family: "Noto Sans", sans-serif;
-                    font-weight: bold;
-                    color: $violet;
-                    font-size: 2.5rem;
-                    margin-bottom: 1.5rem;
-                }
-                .editor-indent,
-                .quote {
-                    border-left: 5px solid $violet;
-                    margin-left: 0 !important;
-                    padding: .75rem 0 .75rem 1.5rem;
-                    margin-bottom: 1rem;
-                }
-            }
-        }
-        // Tarjetas modulos
-        .thegrid {
-            gap: 3rem 1rem;
-            #section-3 {
-                .card-header.text-truncate {
-                    display: flex;
-                    flex-direction: column;
-                }
-                .card-header.text-truncate::before {
-                    content: "Módulo 1";
-                    margin-bottom: 0.25em;
-                }
-            }
-            #section-4 {
-                .card-header.text-truncate {
-                    display: flex;
-                    flex-direction: column;
-                }
-                .card-header.text-truncate::before {
-                    content: "Module 1";
-                    margin-bottom: 0.25em;
-                }
-            }
-            #section-5 {
-                .card-header.text-truncate {
-                    display: flex;
-                    flex-direction: column;
-                }
-                .card-header.text-truncate::before {
-                    content: "Módulo 2";
-                    margin-bottom: 0.25em;
-                }
-            }
-            #section-6 {
-                .card-header.text-truncate {
-                    display: flex;
-                    flex-direction: column;
-                }
-                .card-header.text-truncate::before {
-                    content: "Module 2";
-                    margin-bottom: 0.25em;
-                }
-            }
-            #section-7 {
-                .card-header.text-truncate {
-                    display: flex;
-                    flex-direction: column;
-                }
-                .card-header.text-truncate::before {
-                    content: "Módulo 3";
-                    margin-bottom: 0.25em;
-                }
-            }
-            #section-8 {
-                .card-header.text-truncate {
-                    display: flex;
-                    flex-direction: column;
-                }
-                .card-header.text-truncate::before {
-                    content: "Module 3";
-                    margin-bottom: 0.25em;
-                }
-            }
-            .grid-section.card {
-                width: 280px;
-                height: 300px;
-                a.grid-section-inner {
-                    display: flex;
-                    flex-direction: column;
-                    height: 100%;
-                    .card-header.text-truncate {
-                        order: 2;
-                        overflow: initial;
-                        text-overflow: initial;
-                        white-space: normal;
-                        height: 100%;
-                        font-size: 1.5rem;
-                        font-weight: bold;
-                        line-height: 120%;
-                        color: $gray-3;
-                        padding: 2rem 1.5rem;
-                    }
-                    .grid-image,
-                    .grid-generatedimage {
-                        order: 1;
-                        img {
-                            object-fit: cover;
-                            width: 100%;
-                            height: 100%;
-                        }
-                        .grid-completion {
-                            right: 6%;
-                            top: 9%;
-                        }
-                    }
-                }
-                .card-header {
-                    background-color: $gray-1;
-                }
-            }
-            .grid-section.card:has(.grid-percentagevalue-100) {
-                .card-header {
-                    background-color: $dark-green;
-                    color: white !important;
-                }
-                .grid-completion {
-                    background-color: white;
-                    color: $dark-green;
-                    font-weight: 700;
-                    border-color: $dark-green;
-                }
-            }
-            .grid-section.card:has(.grid-completion-colour-middle) {
-                .card-header {
-                    background-color: $violet;
-                    color: white !important;
-                }
-                .grid-completion {
-                    background-color: white;
-                    color: $violet;
-                    font-weight: 700;
-                    //border-color: $violet;
-                    //border-bottom-color: red;
-                    //border-right-color: red;
-                    //border-left-color: pink;
-                }
-            }
-            .grid-section.card:has(.grid-percentagevalue-0) {
-                .card-header {
-                    background-color: $gray-1;
-                }
-                .grid-completion {
-                    background-color: white;
-                    color: $gray-3;
-                    font-weight: 700;
-                    border-color: $gray-2;
-                }
-            }
-        }
-    }
-}
 
 // Recurso Página
 #page-mod-page-view {
@@ -297,7 +114,7 @@ h3 {
 }
 
 // Estilos de los Recursos - sin edición activa
-body:not(.editing) {
+/* body:not(.editing) {
     li.activity:not(.label) .activity-item{
             background-color: $gray-1;
         }
@@ -340,4 +157,4 @@ body:not(.editing) {
             }
         }
     }
-}
+} */
