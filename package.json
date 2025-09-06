@@ -1,0 +1,21 @@
+{
+    "name": "campus-repos",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "build": "sass public/campus:public/campus --no-source-map --style compressed",
+        "watch": "sass --watch public/campus:public/campus --no-source-map --style compressed",
+        "server": "node server.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.21.2",
+        "sass": "^1.83.4"
+    },
+    "devDependencies": {
+        "npm-run-all2": "^7.0.2"
+    }
+}

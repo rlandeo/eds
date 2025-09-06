@@ -1,0 +1,2340 @@
+/* THEME STYLES */
+
+// Font import
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+// Normalize
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: "Noto Sans", sans-serif !important;
+    overscroll-behavior: none;
+}
+
+// Theme Colors
+$black: #464646;
+$gray-1: #EFEFEF;
+$gray-2: #CBCBCB;
+$white: #ffffff;
+$violet: #8A38F5;
+$green: #2ADD98;
+$sky-blue: #39A4F5;
+$aqua-green: #3AB8BC;
+$apple-green: #69B620;
+$orange: #F56B30;
+$yellow: #FDF7BF;
+// Typography Levels
+@mixin font-level-1 {
+    font-size: 30px;
+    @media screen and (max-width: 576px) {
+        font-size: 20px;
+    }
+}
+
+@mixin font-level-2 {
+    font-size: 24px;
+    @media screen and (max-width: 576px) {
+        font-size: 18px;
+    }
+}
+
+@mixin font-level-3 {
+    font-size: 20px;
+    line-height: 140%;
+    @media screen and (max-width: 576px) {
+        font-size: 16px;
+    }
+}
+
+@mixin font-level-4 {
+    font-size: 16px;
+    @media screen and (max-width: 576px) {
+        font-size: 14px;
+    }
+}
+
+// Buttons
+@mixin button($variant: primary) {
+    @include font-level-3;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 12px 35px;
+    border-radius: 50px;
+    transition: all .1s ease-out;
+    transform: scale(1);
+    border: none;
+    &:focus {
+        box-shadow: none;
+        outline: 3px solid $aqua-green;
+        outline-offset: 4px;
+    }
+    &:hover {
+        background-color: $black;
+        outline: 2px solid transparent;
+    }
+    &:active {
+        transform: scale(.95);
+    }
+    @if $variant==primary {
+        background-color: $aqua-green;
+        color: white;
+        outline: 2px solid transparent;
+        outline-offset: 0px;
+    }
+    @if $variant==secondary {
+        background-color: $white;
+        color: $aqua-green;
+        outline: 2px solid $gray-2;
+        outline-offset: 0px;
+        &:hover {
+            color: white;
+        }
+    }
+}
+
+// Border radius
+@mixin border-radius-1 {
+    border-radius: 40px;
+    @media screen and (max-width: 576px) {
+        border-radius: 20px;
+    }
+}
+
+@mixin border-radius-2 {
+    border-radius: 30px;
+    @media screen and (max-width: 576px) {
+        border-radius: 15px;
+    }
+}
+
+@mixin border-radius-3 {
+    border-radius: 20px;
+    @media screen and (max-width: 576px) {
+        border-radius: 10px;
+    }
+}
+
+@mixin border-radius-4 {
+    border-radius: 6px;
+    @media screen and (max-width: 576px) {
+        border-radius: 3px;
+    }
+}
+
+
+/* ------------------------------------------------------------ */
+
+
+/* ESTILOS PÁGINA PRINCIPAL */
+
+#page-course-view-topics {
+    &:not(.editing) {
+        //&.editing{
+        .drawer-left,
+        .drawer-right,
+        .drawer {
+            display: none !important;
+        }
+        #page.show-drawer-left,
+        #page.show-drawer-right {
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+        }
+    }
+    #page-wrapper {
+        #page {
+            padding: 0;
+            overflow-x: hidden;
+            .main-inner {
+                max-width: 900px !important;
+                margin: 0;
+                padding: 0;
+            }
+        }
+    }
+    #page-header {
+        position: relative;
+        max-width: none !important;
+        height: 200px;
+        width: 100%;
+        background-color: $aqua-green;
+        color: $white;
+        @media screen and (max-width: 576px) {
+            height: calc(110px + (150 - 110) * ((100vw - 300px) / (576 - 300)));
+        }
+        .page-context-header {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: 0 auto;
+            width: 600px;
+            background-image: url(/campus/base/img/course-brand.svg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 100% auto;
+            @media screen and (max-width: 576px) {
+                width: calc(255px + (400 - 255) * ((100vw - 300px) / (576 - 300)));
+            }
+            .page-header-headings {
+                .h2 {
+                    display: none;
+                }
+            }
+        }
+    }
+    #page-content {
+        padding: 0 15px;
+        ul.topics {
+            max-width: 1500px!important;
+            margin: 0 auto;
+            .section {
+                padding: 20px;
+                background-color: $gray-2;
+                margin: 30px 0 30px 0;
+                padding: 20px 25px 60px 25px;
+                @include border-radius-1;
+                border: none;
+                @media screen and (max-width: 576px) {
+                    margin: 15px 0 15px 0;
+                    padding: 25px 20px 25px 20px;
+                }
+                .course-section-header {
+                    .sectionname {
+                        @include font-level-1;
+                        font-weight: 700;
+                        line-height: 125%;
+                        color: $black;
+                    }
+                }
+                .summarytext {
+                    text-align: center;
+                    max-width: 800px;
+                    margin: 40px auto 0 auto!important;
+                    @media screen and (max-width: 576px) {
+                        margin: 20px auto 0 auto!important;
+                    }
+                    p,
+                    ul li {
+                        @include font-level-3;
+                        font-weight: 400;
+                        color: $black;
+                        margin-bottom: 20px;
+                        a {
+                            font-weight: 700;
+                            text-decoration: underline;
+                            color: $black;
+                        }
+                    }
+                    ul {
+                        list-style: none;
+                        padding: 0;
+                        max-width: 550px;
+                        text-align: left;
+                        margin: 25px auto 28px auto;
+                        @media screen and (max-width: 576px) {
+                            max-width: 95%;
+                            margin: 15px auto 18px auto;
+                        }
+                        li {
+                            position: relative;
+                            padding-left: 20px;
+                            margin-bottom: 0;
+                            @media screen and (max-width: 576px) {
+                                padding-left: 15px;
+                            }
+                            &::before {
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                content: "•";
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                font-family: "Sen", sans-serif;
+                                font-weight: 800;
+                                color: $black;
+                                font-size: 24px;
+                                @media screen and (max-width: 576px) {
+                                    font-size: 20px;
+                                }
+                            }
+                        }
+                    }
+                    img {
+                        width: 90%;
+                        height: auto;
+                        @include border-radius-2;
+                        margin: 25px auto 0 auto;
+                        @media screen and (max-width: 576px) {
+                            margin-top: 5px;
+                        }
+                    }
+                    .reels {
+                        display: flex;
+                        justify-content: space-between;
+                        margin: 40px 0 40px 0;
+                        @media screen and (max-width: 576px) {
+                            flex-wrap: wrap;
+                            margin: 32px 0 10px 0;
+                        }
+                        .video-wrapper {
+                            display: flex;
+                            width: 48.5%;
+                            overflow: hidden;
+                            @include border-radius-2;
+                            @media screen and (max-width: 576px) {
+                                width: 90%;
+                                margin: 0 auto 20px auto;
+                            }
+                            video {
+                                width: 100%;
+                                height: auto;
+                                margin: 0;
+                            }
+                        }
+                    }
+                    .custom-audio {
+                        margin: 30px auto 30px auto;
+                        audio {
+                            width: 50%;
+                            @media screen and (max-width: 576px) {
+                                width: 90%;
+                            }
+                        }
+                        audio::-webkit-media-controls-panel {
+                            background-color: #fff;
+                            color: #fff;
+                        }
+                    }
+                    .custom-btns {
+                        display: flex;
+                        justify-content: center;
+                        margin-top: 45px;
+                        padding: 10px 0;
+                        @media screen and (max-width: 576px) {
+                            flex-direction: column;
+                            align-items: center;
+                            margin-top: 30px;
+                        }
+                        a {
+                            width: fit-content;
+                            @include button(secondary);
+                            margin-left: 15px;
+                            @media screen and (max-width: 576px) {
+                                margin: 10px 0 0 0;
+                            }
+                            &:first-child {
+                                @include button(primary);
+                                margin-left: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    // Aplica estilos cuando se desactiva el modo edición.
+    &:not(.editing) {
+        //&.editing{
+        #page-wrapper {
+            #page {
+                .main-inner {
+                    #page-header {
+                        margin-bottom: 60px;
+                        @media screen and (max-width: 576px) {
+                            margin-bottom: 30px;
+                        }
+                    }
+                    .secondary-navigation {
+                        display: none!important;
+                    }
+                    .drawer-toggles,
+                    .drawer-toggles .drawer-toggler {
+                        display: none!important;
+                    }
+                }
+            }
+        }
+        #page-content {
+            ul.topics {
+                .section {
+                    .course-section-header {
+                        .sectionbadges {
+                            display: none!important;
+                        }
+                        .section_action_menu {
+                            display: none!important;
+                        }
+                        .sectionname {
+                            @include font-level-1;
+                            font-weight: 700;
+                            color: $black;
+                        }
+                        div {
+                            position: relative;
+                            display: flex;
+                            justify-content: center;
+                            width: 100%;
+                            padding: 40px 0 0 0;
+                            @media screen and (max-width: 576px) {
+                                padding: 0;
+                            }
+                            h3 {
+                                text-align: center;
+                                max-width: 800px;
+                                @media screen and (max-width: 1024px) {
+                                    max-width: calc(165px + (800 - 165) * ((100vw - 300px) / (1024 - 300)));
+                                }
+                                .quickediticon {
+                                    display: none;
+                                }
+                            }
+                            .icons-collapse-expand {
+                                position: absolute;
+                                top: 0;
+                                right: -5px;
+                                background-color: $white;
+                                width: 40px;
+                                height: 40px;
+                                margin: 0!important;
+                                @media screen and (max-width: 576px) {
+                                    top: -15px;
+                                    width: 30px;
+                                    height: 30px;
+                                }
+                                .icon {
+                                    font-size: 20px;
+                                    width: 20px;
+                                    height: 20px;
+                                    transform: rotate(90deg);
+                                    @media screen and (max-width: 576px) {
+                                        font-size: 16px;
+                                        width: 16px;
+                                        height: 16px;
+                                    }
+                                }
+                                .expanded-icon {
+                                    .icon {
+                                        transform: rotate(180deg);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .course-content-item-content {
+                        .divider {
+                            display: none;
+                        }
+                        ul.section {
+                            display: none!important;
+                        }
+                        .section_availability {
+                            display: none!important;
+                        }
+                        .btn {
+                            display: none!important;
+                        }
+                        .changenumsections {
+                            display: none!important;
+                        }
+                    }
+                    // Estilo última caja (linea de tiempo)
+                    &:last-child {
+                        background-color: $white;
+                        margin: 80px 0 0 0;
+                        padding: 0;
+                        @media screen and (max-width: 576px) {
+                            margin: 50px 0 0 0;
+                        }
+                        .course-section-header {
+                            background-image: url(/campus/base/img/linea-tiempo-2.png);
+                            background-repeat: no-repeat;
+                            background-position: center top;
+                            background-size: 100px auto;
+                            padding: 120px 0 0 0;
+                            @media screen and (max-width: 576px) {
+                                background-size: 75px auto;
+                                padding: 90px 0 0 0;
+                            }
+                            div {
+                                padding: 0;
+                            }
+                            h3 {
+                                @include font-level-2;
+                                color: $black;
+                                @media screen and (max-width: 576px) {
+                                    max-width: 100%;
+                                }
+                            }
+                            .icons-collapse-expand {
+                                display: none;
+                            }
+                        }
+                        .course-content-item-content {
+                            display: none;
+                        }
+                    }
+                }
+                // Estilos Accesos Libreta y Biblioteca 
+                #section-0 {
+                    background-color: $white;
+                    margin-top: 0;
+                    margin-bottom: 80px;
+                    padding: 0;
+                    border-radius: 0;
+                    @media screen and (max-width: 576px) {
+                        margin-bottom: 50px;
+                    }
+                    .course-section-header {
+                        display: none!important;
+                    }
+                    margin: 0!important;
+                    .summarytext {
+                        margin-top: 0!important;
+                        width: 100%;
+                        max-width: 100%;
+                        div {
+                            display: flex;
+                            justify-content: end;
+                            a {
+                                display: flex;
+                                align-items: center;
+                                gap: 15px;
+                                @include font-level-3;
+                                font-weight: 700;
+                                color: $black;
+                                @include border-radius-4;
+                                text-decoration: none;
+                                border: 2px solid $gray-2;
+                                padding: 10px 20px;
+                                @media screen and (max-width: 576px) {
+                                    gap: 10px;
+                                }
+                                &:hover {
+                                    background-color: $black;
+                                    color: $white;
+                                    border: 2px solid $black;
+                                }
+                                &:last-child {
+                                    background-color: $yellow;
+                                    background-image: url(/campus/base/img/libreta-icon.svg);
+                                    background-repeat: no-repeat;
+                                    background-position: left 15px center;
+                                    background-size: 22px auto;
+                                    padding: 10px 20px 10px 45px;
+                                    border: none;
+                                    &:hover {
+                                        background-color: $black;
+                                        background-image: url(/campus/base/img/libreta-white-icon.svg);
+                                        color: $white;
+                                        border: none;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                // Separadores                                
+                li.section.section-divider {
+                    position: relative;
+                    background-color: $white;
+                    margin: 100px 0;
+                    padding: 95px 0 20px 0;
+                    border-radius: 0;
+                    border-bottom: 2px solid #d0d0d0;
+                    @media screen and (max-width: 576px) {
+                        margin: 50px 0;
+                        padding: 60px 0 15px 0;
+                    }
+                    &::before {
+                        content: var(--count);
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        margin: 0 auto;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 70px;
+                        height: 70px;
+                        font-family: "Sen", sans-serif;
+                        font-weight: 800;
+                        color: $aqua-green;
+                        font-size: 42px;
+                        border-radius: 50%;
+                        background-color: $gray-2;
+                        @media screen and (max-width: 576px) {
+                            width: 50px;
+                            height: 50px;
+                            font-size: 30px;
+                        }
+                    }
+                    .course-section-header {
+                        .icons-collapse-expand {
+                            display: none;
+                        }
+                        div {
+                            padding: 0;
+                            h3 {
+                                font-family: "Sen", sans-serif;
+                                font-weight: 800;
+                                color: $aqua-green;
+                                text-transform: uppercase;
+                            }
+                        }
+                    }
+                    .course-content-item-content {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/* ------------------------------------------------------------ */
+
+
+/* ESTILOS PÁGINAS */
+
+.pagelayout-incourse {
+    #page-wrapper {
+        #page {
+            padding: 0;
+            margin-bottom: 0;
+            overflow-x: hidden;
+            .main-inner {
+                margin: 0;
+                padding: 0;
+                max-width: none !important;
+                width: 100%;
+                .back {
+                    background-color: $aqua-green;
+                    width: 100%;
+                    padding: 12px 0 12px 40px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    @media screen and (max-width: 576px) {
+                        padding: 10px 0 10px 20px;
+                    }
+                    a {
+                        background-image: url(/campus/base/img/back-arrow-icon.svg);
+                        background-repeat: no-repeat;
+                        background-position: left center;
+                        background-size: 16px auto;
+                        padding-left: 24px;
+                        @include font-level-3;
+                        font-weight: 600;
+                        color: $white;
+                        @media screen and (max-width: 576px) {
+                            background-size: 13px auto;
+                            padding-left: 20px;
+                        }
+                    }
+                }
+                #page-content {
+                    padding: 0 15px;
+                    .activity-header {
+                        background-color: transparent;
+                        display: block;
+                        margin: 0 0 60px 0!important;
+                        padding-top: 65px;
+                        @media screen and (max-width: 576px) {
+                            padding-top: 35px;
+                            margin-bottom: 30px!important;
+                        }
+                        .activity-description {
+                            padding: 0!important;
+                            h2,
+                            h3 {
+                                @include font-level-1;
+                                font-weight: 700;
+                                color: $black;
+                                text-align: center;
+                                width: 100%;
+                                max-width: 800px;
+                                margin: 0 auto 30px auto;
+                                @media screen and (max-width: 576px) {
+                                    margin-bottom: 20px;
+                                }
+                            }
+                            p {
+                                @include font-level-3;
+                                font-weight: 400;
+                                color: $black;
+                                text-align: center;
+                                width: 100%;
+                                max-width: 800px;
+                                margin: 0 auto 25px auto;
+                                @media screen and (max-width: 576px) {
+                                    margin-bottom: 15px;
+                                }
+                                &:last-child {
+                                    margin-bottom: 0;
+                                }
+                                a {
+                                    color: $aqua-green;
+                                    font-weight: 700;
+                                    text-decoration: underline;
+                                    &:hover {
+                                        color: $black;
+                                    }
+                                }
+                            }
+                            .custom-btns {
+                                display: flex;
+                                justify-content: center;
+                                margin-top: 45px;
+                                padding: 10px 0;
+                                @media screen and (max-width: 576px) {
+                                    flex-direction: column;
+                                    align-items: center;
+                                    margin-top: 30px;
+                                }
+                                a {
+                                    width: fit-content;
+                                    @include button(secondary);
+                                    margin-left: 15px;
+                                    @media screen and (max-width: 576px) {
+                                        margin: 10px 0 0 0;
+                                    }
+                                    &:first-child {
+                                        @include button(primary);
+                                        margin-left: 0;
+                                    }
+                                }
+                            }
+                        }
+                        .activity-information {
+                            display: none;
+                        }
+                    }
+                    div[role=main] {
+                        //max-width: 1500px;
+                        max-width: 1300px;
+                        margin: 0 auto;
+                        padding-top: 65px;
+                        @media screen and (max-width: 576px) {
+                            padding-top: 35px;
+                        }
+                        .custom-btns {
+                            display: flex;
+                            justify-content: center;
+                            margin-top: 45px;
+                            padding: 10px 0;
+                            @media screen and (max-width: 576px) {
+                                flex-direction: column;
+                                align-items: center;
+                                margin-top: 30px;
+                            }
+                            a {
+                                width: fit-content;
+                                @include button(secondary);
+                                margin-left: 15px;
+                                @media screen and (max-width: 576px) {
+                                    margin: 10px 0 0 0;
+                                }
+                                &:first-child {
+                                    @include button(primary);
+                                    margin-left: 0;
+                                }
+                            }
+                        }
+                        .box {
+                            padding: 0!important;
+                        }
+                        h2 {
+                            @include font-level-1;
+                            font-weight: 700;
+                            color: $black;
+                            text-align: center;
+                            width: 100%;
+                            max-width: 800px;
+                            margin: 0 auto 45px auto;
+                            @media screen and (max-width: 576px) {
+                                margin-bottom: 25px;
+                            }
+                        }
+                        p {
+                            @include font-level-3;
+                            font-weight: 400;
+                            color: $black;
+                            margin: 0 auto 25px auto;
+                            text-align: center;
+                            max-width: 800px;
+                            @media screen and (max-width: 576px) {
+                                margin-bottom: 15px;
+                            }
+                            a {
+                                text-decoration: underline;
+                                font-weight: 700;
+                                color: $aqua-green;
+                                padding: 0;
+                            }
+                        }
+                        ul {
+                            &.numbers-list {
+                                list-style: none;
+                                padding: 0;
+                                max-width: 800px;
+                                margin: 0 auto;
+                                @include font-level-3;
+                                font-weight: 400;
+                                color: $black;
+                                li {
+                                    position: relative;
+                                    text-align: left;
+                                    max-width: 100%;
+                                    padding-left: 70px;
+                                    margin-bottom: 25px!important;
+                                    @media screen and (max-width: 576px) {
+                                        padding-left: 45px;
+                                        margin-bottom: 15px!important;
+                                    }
+                                    &::before {
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+                                        content: "-";
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        width: 50px;
+                                        height: 50px;
+                                        font-family: "Sen", sans-serif;
+                                        font-weight: 800;
+                                        color: $aqua-green;
+                                        font-size: 30px;
+                                        border-radius: 50%;
+                                        background-color: $gray-2;
+                                        @media screen and (max-width: 576px) {
+                                            width: 35px;
+                                            height: 35px;
+                                            font-size: 20px;
+                                        }
+                                    }
+                                    &:nth-child(1) {
+                                        &::before {
+                                            content: "1";
+                                        }
+                                    }
+                                    &:nth-child(2) {
+                                        &::before {
+                                            content: "2";
+                                        }
+                                    }
+                                    &:nth-child(3) {
+                                        &::before {
+                                            content: "3";
+                                        }
+                                    }
+                                    &:nth-child(4) {
+                                        &::before {
+                                            content: "4";
+                                        }
+                                    }
+                                    &:nth-child(5) {
+                                        &::before {
+                                            content: "5";
+                                        }
+                                    }
+                                    &:nth-child(6) {
+                                        &::before {
+                                            content: "6";
+                                        }
+                                    }
+                                    &:nth-child(7) {
+                                        &::before {
+                                            content: "7";
+                                        }
+                                    }
+                                    &:nth-child(8) {
+                                        &::before {
+                                            content: "8";
+                                        }
+                                    }
+                                    &:nth-child(9) {
+                                        &::before {
+                                            content: "9";
+                                        }
+                                    }
+                                    &:nth-child(10) {
+                                        &::before {
+                                            content: "10";
+                                        }
+                                    }
+                                    a {
+                                        text-decoration: underline;
+                                        font-weight: 700;
+                                        color: $aqua-green;
+                                        padding: 0;
+                                    }
+                                }
+                            }
+                        }
+                        // Activity Heading 
+                        .activity-heading {
+                            max-width: 800px;
+                            text-align: center;
+                            margin: 0 auto 65px auto;
+                            @media screen and (max-width: 576px) {
+                                margin-bottom: 35px;
+                            }
+                            h3,
+                            .title {
+                                @include font-level-1;
+                                font-weight: 700;
+                                color: $black;
+                                margin-bottom: 40px;
+                                @media screen and (max-width: 576px) {
+                                    margin-bottom: 20px;
+                                }
+                            }
+                            p {
+                                @include font-level-3;
+                                font-weight: 400;
+                                color: $black;
+                                margin-bottom: 25px;
+                                @media screen and (max-width: 576px) {
+                                    margin-bottom: 15px;
+                                }
+                                a {
+                                    color: $aqua-green;
+                                    font-weight: 700;
+                                    text-decoration: underline;
+                                    &:hover {
+                                        color: $black;
+                                    }
+                                }
+                            }
+                        }
+                        // Video Component
+                        .video-component {
+                            max-width: 1000px;
+                            margin: 0 auto 55px auto;
+                            @media screen and (max-width: 576px) {
+                                margin-bottom: 30px;
+                            }
+                            .video-wrapper {
+                                position: relative;
+                                overflow: hidden;
+                                width: 100%;
+                                padding-top: 56.25%;
+                                @include border-radius-2;
+                            }
+                            iframe {
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                bottom: 0;
+                                right: 0;
+                                width: 100%;
+                                height: 100%;
+                            }
+                            p {
+                                padding-top: 10px;
+                                color: #878787;
+                                @media screen and (max-width: 576px) {
+                                    padding-top: 5px;
+                                }
+                            }
+                        }
+                        // WhatsApp Component
+                        .whatsapp-component {
+                            .wrapper-messages {
+                                background-color: $gray-2;
+                                padding: 45px 65px;
+                                @include border-radius-1;
+                                margin-bottom: 60px;
+                                @media screen and (max-width: 576px) {
+                                    padding: 15px;
+                                    margin-bottom: 35px;
+                                }
+                                .message-row {
+                                    width: 100%;
+                                    display: flex;
+                                    margin-bottom: 25px;
+                                    @media screen and (max-width: 576px) {
+                                        margin-bottom: 15px;
+                                    }
+                                    .message-card {
+                                        position: relative;
+                                        background-color: $white;
+                                        padding: 30px 40px 30px 40px;
+                                        width: 48%;
+                                        @media screen and (max-width: 1024px) {
+                                            padding: 20px;
+                                            width: 80%;
+                                        }
+                                        &.left {
+                                            margin-right: auto;
+                                            border-radius: 0 40px 40px 40px;
+                                            @media screen and (max-width: 576px) {
+                                                border-radius: 0 15px 15px 15px;
+                                            }
+                                        }
+                                        &.right {
+                                            margin-left: auto;
+                                            border-radius: 40px 0 40px 40px;
+                                            @media screen and (max-width: 576px) {
+                                                border-radius: 15px 0 15px 15px;
+                                            }
+                                        }
+                                        p,
+                                        ul li {
+                                            @include font-level-3;
+                                            font-weight: 400;
+                                            color: $black;
+                                            margin-bottom: 0;
+                                            text-align: left;
+                                            width: 100%;
+                                            max-width: 100%;
+                                            margin-bottom: 15px;
+                                            @media screen and (max-width: 576px) {
+                                                margin-bottom: 10px;
+                                            }
+                                            &:last-child {
+                                                margin-bottom: 0;
+                                            }
+                                            &.name {
+                                                @include font-level-2;
+                                                font-weight: 700;
+                                                margin-bottom: 15px;
+                                                color: $aqua-green;
+                                                @media screen and (max-width: 576px) {
+                                                    margin-bottom: 10px;
+                                                }
+                                                &.green {
+                                                    color: $apple-green;
+                                                }
+                                                &.orange {
+                                                    color: $orange;
+                                                }
+                                                &.violet {
+                                                    color: $violet;
+                                                }
+                                                &.sky-blue {
+                                                    color: $sky-blue;
+                                                }
+                                            }
+                                            &.forwarded {
+                                                background-image: url(/campus/base/img/forwarded-icon.jpg);
+                                                background-repeat: no-repeat;
+                                                background-position: left center;
+                                                background-size: 20px auto;
+                                                width: 100%;
+                                                padding-left: 26px;
+                                                margin-bottom: 20px;
+                                                font-style: italic;
+                                                color: #b7b7b7;
+                                                @media screen and (max-width: 576px) {
+                                                    background-size: 15px auto;
+                                                    padding-left: 20px;
+                                                    margin-bottom: 15px;
+                                                }
+                                            }
+                                        }
+                                        ul {
+                                            padding-left: 22px;
+                                            margin-bottom: 0;
+                                        }
+                                        &.link {
+                                            display: flex;
+                                            flex-wrap: wrap;
+                                            padding: 30px 40px;
+                                            @media screen and (max-width: 576px) {
+                                                padding: 15px;
+                                            }
+                                            a,
+                                            .autolink {
+                                                background-image: url(/campus/base/img/link-icon.svg);
+                                                background-repeat: no-repeat;
+                                                background-position: left center;
+                                                background-size: 50px auto;
+                                                display: inline-block;
+                                                white-space: nowrap;
+                                                overflow: hidden;
+                                                text-overflow: ellipsis;
+                                                @include font-level-3;
+                                                font-weight: 400;
+                                                color: $black;
+                                                padding: 12px 0 12px 65px;
+                                                width: 100%;
+                                                cursor: pointer!important;
+                                                @media screen and (max-width: 576px) {
+                                                    background-size: 30px auto;
+                                                    padding: 5px 0 5px 40px;
+                                                }
+                                                &:hover {
+                                                    color: $aqua-green;
+                                                }
+                                            }
+                                        }
+                                        &.image {
+                                            padding: 15px;
+                                            p {
+                                                margin-left: 25px;
+                                                margin-right: 25px;
+                                                &:first-of-type {
+                                                    margin-top: 15px;
+                                                }
+                                                @media screen and (max-width: 1024px) {
+                                                    margin-left: 5px;
+                                                    margin-right: 5px;
+                                                    &:first-of-type {
+                                                        margin-top: 5px;
+                                                    }
+                                                }
+                                            }
+                                            img {
+                                                width: 100%;
+                                                height: auto;
+                                                @include border-radius-2;
+                                                border: solid 2px #ededed;
+                                                @media screen and (max-width: 576px) {
+                                                    border: solid 1px #ededed;
+                                                }
+                                            }
+                                        }
+                                        &.audio {
+                                            display: flex;
+                                            justify-content: center;
+                                            flex-wrap: wrap;
+                                            padding: 30px 40px;
+                                            @media screen and (max-width: 576px) {
+                                                padding: 15px;
+                                            }
+                                            audio {
+                                                width: 100%;
+                                            }
+                                            audio::-webkit-media-controls-panel {
+                                                background-color: #f7f7f7;
+                                                color: #fff;
+                                            }
+                                            p {
+                                                width: 100%;
+                                            }
+                                        }
+                                        .action-menu {
+                                            position: absolute;
+                                            top: 10px;
+                                            right: 10px;
+                                            .dropdown-toggle {
+                                                background-color: rgb(247, 247, 247);
+                                            }
+                                        }
+                                        .message-time {
+                                            width: 100%;
+                                            text-align: right;
+                                            span {
+                                                @include font-level-4;
+                                                color: #b2b2b2;
+                                            }
+                                        }
+                                        label {
+                                            display: none;
+                                        }
+                                        textarea {
+                                            width: 100%;
+                                            min-height: 120px;
+                                            border-radius: 0;
+                                            border-color: $gray-1;
+                                            @include font-level-3;
+                                            font-weight: 400;
+                                            color: $black;
+                                            @media screen and (max-width: 576px) {
+                                                min-height: 100px;
+                                            }
+                                        }
+                                    }
+                                }
+                                .date {
+                                    width: fit-content;
+                                    @include font-level-3;
+                                    font-weight: 600;
+                                    color: #636363;
+                                    margin: 25px auto;
+                                    padding: 6px 15px;
+                                    background-color: $white;
+                                    @include border-radius-4;
+                                    @media screen and (max-width: 576px) {
+                                        margin: 15px auto;
+                                        padding: 5px 10px;
+                                    }
+                                }
+                            }
+                        }
+                        // Accordion WhatsApp Component
+                        .accordion-whatsapp {
+                            .whatsapp-component {
+                                .wrapper-messages {
+                                    @include border-radius-4;
+                                }
+                                .title-card-bd {
+                                    width: 100%;
+                                    background-color: $black;
+                                    @include font-level-2;
+                                    color: $white;
+                                    text-align: center;
+                                    @include border-radius-4;
+                                    margin: 0;
+                                    background-image: url(/campus/base/img/dropdown-icon.png);
+                                    background-repeat: no-repeat;
+                                    background-size: 35px auto;
+                                    background-position: right 15px top 15px;
+                                    text-align: left!important;
+                                    font-weight: 400;
+                                    line-height: 130%;
+                                    padding: 20px 20% 20px 40px;
+                                    margin-bottom: 30px;
+                                    cursor: pointer;
+                                    &.icon-collapse {
+                                        background-image: url(/campus/base/img/dropdown-collapse-icon.png);
+                                    }
+                                    span {
+                                        max-width: 900px;
+                                    }
+                                    @media screen and (max-width: 768px) {
+                                        padding: 20px 15px;
+                                        text-align: left;
+                                    }
+                                    @media screen and (max-width: 576px) {
+                                        padding: 20px 20% 20px 15px;
+                                        text-align: left;
+                                    }
+                                }
+                            }
+                        }
+                        // Mail Component
+                        .mail-component {
+                            padding: 60px;
+                            background-color: $gray-1;
+                            @include border-radius-3;
+                            @media screen and (max-width: 768px) {
+                                padding: 15px;
+                            }
+                            .mail-wrapper {
+                                background-color: #dde1e8;
+                                background-image: url(/campus/base/img/mail_bg_1.jpg), url(/campus/base/img/mail_bg_2.jpg);
+                                background-repeat: no-repeat, no-repeat;
+                                background-position: 30px 20px, right 30px top 22px;
+                                background-size: 360px auto, 160px auto;
+                                padding-top: 60px;
+                                @include border-radius-2;
+                                overflow: hidden;
+                                @media screen and (max-width: 1200px) {
+                                    background-position: 22px 20px, right 22px top 22px;
+                                }
+                                @media screen and (max-width: 768px) {
+                                    padding-top: 40px;
+                                    background-image: url(/campus/base/img/mail_bg_1.jpg);
+                                    background-position: 20px 14px;
+                                    background-size: 250px auto;
+                                }
+                                .mail-body {
+                                    position: relative;
+                                    background-color: $white;
+                                    background-image: url(/campus/base/img/mail_body_bg.jpg);
+                                    background-repeat: no-repeat;
+                                    background-position: right 30px top 33px;
+                                    background-size: 160px auto;
+                                    padding: 10px 90px 50px 90px;
+                                    @media screen and (max-width: 1200px) {
+                                        padding: 90px 10px 40px 15px;
+                                    }
+                                    @media screen and (max-width: 768px) {
+                                        padding-top: 80px;
+                                        background-size: 105px auto;
+                                        background-position: right 25px top 33px;
+                                    }
+                                    p,
+                                    ul li,
+                                    a {
+                                        @include font-level-3;
+                                        font-weight: 400;
+                                        line-height: 150%;
+                                        color: $black;
+                                        padding: 0 65px;
+                                        margin: 0 0 25px 0;
+                                        text-align: left;
+                                        max-width: 100%;
+                                        @media screen and (max-width: 768px) {
+                                            line-height: 130%;
+                                            padding: 0 5px;
+                                            margin-bottom: 20px;
+                                        }
+                                        strong {
+                                            font-weight: 800;
+                                        }
+                                        &.subject {
+                                            font-weight: 800;
+                                            margin-bottom: 30px;
+                                            padding: 0 0 0 5px;
+                                            white-space: nowrap;
+                                            overflow: hidden;
+                                            text-overflow: ellipsis;
+                                            @media screen and (max-width: 768px) {
+                                                margin-bottom: 20px;
+                                                padding: 0 0 0 2px;
+                                            }
+                                        }
+                                        &.date {
+                                            position: absolute;
+                                            top: 85px;
+                                            right: 220px;
+                                            font-size: 14px;
+                                            background-image: url(/campus/base/img/rayo_icon_date.jpg);
+                                            background-repeat: no-repeat;
+                                            background-position: left center;
+                                            background-size: 12px auto;
+                                            padding: 0 0 0 20px;
+                                            @media screen and (max-width: 1200px) {
+                                                top: 30px;
+                                                left: 25px;
+                                                right: 0;
+                                            }
+                                            @media screen and (max-width: 768px) {
+                                                top: 30px;
+                                                left: 22px;
+                                                right: 0;
+                                                background-size: 8px auto;
+                                                padding: 0 0 0 15px;
+                                            }
+                                            @media screen and (max-width: 576px) {
+                                                font-size: 12px;
+                                            }
+                                        }
+                                        &.email {
+                                            font-weight: 800;
+                                            margin-bottom: 30px;
+                                            background-image: url(/campus/base/img/profile_email_bg.jpg);
+                                            background-repeat: no-repeat;
+                                            background-position: left center;
+                                            background-size: 50px auto;
+                                            padding: 10px 0 10px 65px;
+                                            white-space: nowrap;
+                                            overflow: hidden;
+                                            text-overflow: ellipsis;
+                                            @media screen and (max-width: 768px) {
+                                                background-size: 30px auto;
+                                                padding: 10px 0 10px 40px;
+                                                margin-bottom: 20px;
+                                            }
+                                        }
+                                    }
+                                    a {
+                                        text-decoration: underline;
+                                        font-weight: 700;
+                                        color: $aqua-green;
+                                        padding: 0;
+                                    }
+                                    ul {
+                                        padding-left: 85px;
+                                        @media screen and (max-width: 768px) {
+                                            padding-left: 25px;
+                                        }
+                                        li {
+                                            padding-left: 0px;
+                                        }
+                                    }
+                                    hr {
+                                        border-top: 1px solid #5f5f5f;
+                                        margin: 30px 62px;
+                                        @media screen and (max-width: 768px) {
+                                            margin: 25px 10px 25px 5px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        // Genially Component
+                        .genially-component {
+                            position: relative;
+                            padding-bottom: 130.4%;
+                            padding-top: 0;
+                            overflow: hidden;
+                            iframe {
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                right: 0;
+                                width: 100%;
+                                height: 115.4%;
+                            }
+                        }
+                        // Limita el ancho del Genially
+                        .genially-width-limit {
+                            max-width: 650px;
+                            margin: 0 auto;
+                        }
+                        // Image Component
+                        .image-component {
+                            display: flex;
+                            @include border-radius-1;
+                            overflow: hidden;
+                            img {
+                                width: 100%;
+                                height: auto;
+                            }
+                        }
+                        // Clases para ocultar en Desk y Mobile  
+                        .show-in-desk {
+                            @media screen and (max-width: 576px) {
+                                display: none;
+                            }
+                        }
+                        .show-in-mobile {
+                            @media screen and (min-width: 576px) {
+                                display: none;
+                            }
+                        }
+                        // Two Cards Component
+                        .two-cards-component {
+                            display: flex;
+                            justify-content: space-between;
+                            max-width: 1000px;
+                            margin: 0 auto;
+                            @media screen and (max-width: 768px) {
+                                flex-wrap: wrap;
+                            }
+                            div {
+                                width: 49%;
+                                background-color: $gray-2;
+                                padding: 25px;
+                                @include border-radius-2;
+                                @media screen and (max-width: 768px) {
+                                    width: 100%;
+                                    margin-bottom: 25px;
+                                }
+                                @media screen and (max-width: 576px) {
+                                    padding: 15px;
+                                }
+                                p {
+                                    background-color: $black;
+                                    text-align: left;
+                                    color: $white;
+                                    padding: 10px 20px;
+                                    @include border-radius-4;
+                                    @media screen and (max-width: 576px) {
+                                        margin-bottom: 20px;
+                                    }
+                                }
+                                ul {
+                                    padding-left: 38px;
+                                    margin-bottom: 10px;
+                                    li {
+                                        @include font-level-3;
+                                        font-weight: 400;
+                                        line-height: 130%;
+                                        color: $black;
+                                        margin-bottom: 20px;
+                                        @media screen and (max-width: 576px) {
+                                            margin-bottom: 15px;
+                                        }
+                                        &:last-child {
+                                            margin-bottom: 0;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        // Estilos botonera bases de datos
+                        .stickyfooter {
+                            position: static!important;
+                            display: flex!important;
+                            flex-wrap: wrap!important;
+                            justify-content: center!important;
+                            align-items: center!important;
+                            box-shadow: none!important;
+                            transition: none!important;
+                            height: auto;
+                            background-color: transparent!important;
+                            border: none!important;
+                            gap: 12px;
+                            @media screen and (max-width: 576px) {
+                                flex-wrap: wrap;
+                            }
+                            .navitem {
+                                display: flex;
+                                justify-content: center!important;
+                                align-items: center!important;
+                                gap: 12px;
+                                width: 100%;
+                                margin: 0!important;
+                                @media screen and (max-width: 576px) {
+                                    flex-wrap: wrap;
+                                    justify-content: center;
+                                }
+                                .pagination {
+                                    &:first-of-type {
+                                        margin-bottom: 15px;
+                                    }
+                                    .page-item {
+                                        color: $black;
+                                        .page-link {
+                                            color: $black;
+                                        }
+                                        &.active {
+                                            .page-link {
+                                                background-color: $aqua-green;
+                                                color: $white;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            .btn-primary {
+                                @include button(primary);
+                                margin: 0 !important;
+                            }
+                            .btn-secondary {
+                                @include button(secondary);
+                                margin: 0 !important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    // Estilos Pop-up
+    &.path-mod-page {
+        .moodle-dialogue-base {
+            .moodle-dialogue {
+                position: fixed;
+                width: 100%!important;
+                top: 0!important;
+                bottom: 0!important;
+                left: 0!important;
+                right: 0!important;
+                background-color: $gray-2!important;
+                overflow-y: scroll;
+                .moodle-dialogue-wrap.moodle-dialogue-content {
+                    position: absolute!important;
+                    left: 0!important;
+                    right: 0!important;
+                    margin: 0 auto!important;
+                    max-width: 900px!important;
+                    border: none!important;
+                    background-color: transparent!important;
+                    padding: 45px 0!important;
+                    @media screen and (max-width: 576px) {
+                        padding: 55px 0!important;
+                    }
+                    .moodle-dialogue-hd {
+                        display: none!important;
+                    }
+                    .moodle-dialogue-bd {
+                        .confirmation-dialogue {
+                            display: flex!important;
+                            flex-wrap: wrap!important;
+                            flex-direction: column-reverse!important;
+                            .confirmation-message {
+                                width: 100%!important;
+                                img {
+                                    width: 100%!important;
+                                    height: auto!important;
+                                }
+                            }
+                            .confirmation-buttons {
+                                position: fixed;
+                                top: 20px;
+                                right: 40px;
+                                @media screen and (max-width: 576px) {
+                                    top: 15px;
+                                    right: 15px;
+                                }
+                                .btn-primary {
+                                    background-image: url(/campus/base/img/close_icon.svg);
+                                    background-repeat: no-repeat;
+                                    background-position: center;
+                                    background-size: 25px auto;
+                                    width: 50px;
+                                    height: 50px;
+                                    min-width: 0;
+                                    font-size: 0;
+                                    color: transparent;
+                                    text-decoration: none;
+                                    padding: 0;
+                                    border-radius: 50px;
+                                    transition: all .1s ease-out;
+                                    transform: scale(1);
+                                    border: none;
+                                    @media screen and (max-width: 576px) {
+                                        background-size: 18px auto;
+                                        width: 40px;
+                                        height: 40px;
+                                    }
+                                    &:focus {
+                                        box-shadow: none;
+                                        outline: 3px solid $aqua-green;
+                                        outline-offset: 4px;
+                                    }
+                                    &:hover {
+                                        background-color: $black;
+                                        outline: 2px solid transparent;
+                                    }
+                                    &:active {
+                                        transform: scale(.95);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    // Estilos específicos BD
+    &.path-mod-data {
+        #page {
+            .main-inner {
+                #page-content {
+                    div[role=main] {
+                        padding-top: 0!important;
+                        .whatsapp-component {
+                            margin-top: 40px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    // Estilos BD Tablas
+    .content-table-bd {
+        .user-content-bd {
+            display: flex;
+            align-items: end;
+            margin: 65px 0 20px 0;
+            @media screen and (max-width: 576px) {
+                margin: 45px 0 15px 0;
+            }
+            .user-info-bd {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                div {
+                    text-align: center;
+                    a {
+                        @include font-level-4;
+                        color: $black;
+                    }
+                }
+                .userinitials {
+                    margin: 0;
+                    margin-bottom: 5px;
+                }
+            }
+            .user-actions-bd {
+                display: flex;
+                align-items: center;
+                margin-left: auto;
+                .user-modify-bd {
+                    @include font-level-4;
+                    color: $black;
+                    margin-right: 25px;
+                }
+                .menu-action-bd {
+                    .dropdown-toggle {
+                        background-color: $gray-2;
+                    }
+                }
+            }
+        }
+        .title-table-bd {
+            width: 100%;
+            @include font-level-1;
+            color: $aqua-green;
+            font-weight: 700;
+            text-align: center;
+            padding-top: 20px;
+            margin: 80px 0 25px 0;
+            border-top: 3px solid $black;
+            @media screen and (max-width: 576px) {
+                padding-top: 15px;
+                margin: 55px 0 15px 0;
+                border-top: 2px solid $black;
+            }
+        }
+        .content-card-bd {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+            .title-card-bd {
+                width: 100%;
+                background-color: $black;
+                @include font-level-2;
+                color: $white;
+                font-weight: 600;
+                text-align: center;
+                padding: 20px 10%;
+                @include border-radius-4;
+                margin: 0;
+                span {
+                    max-width: 900px;
+                }
+                @media screen and (max-width: 768px) {
+                    padding: 20px 15px;
+                    text-align: left;
+                }
+                @media screen and (max-width: 576px) {
+                    text-align: left;
+                }
+            }
+            .card-bd,
+            .respuesta-elac {
+                background-color: $gray-2;
+                width: calc(50% - 5px);
+                min-height: 250px;
+                @include font-level-3;
+                color: $black;
+                border: none;
+                @include border-radius-4;
+                padding: 30px 40px;
+                @media screen and (max-width: 768px) {
+                    width: 100%;
+                }
+                @media screen and (max-width: 576px) {
+                    padding: 20px 15px;
+                    min-height: 200px;
+                }
+                h5 {
+                    @include font-level-3;
+                    font-weight: 900;
+                    line-height: 120%;
+                    text-transform: uppercase;
+                    color: $aqua-green;
+                    margin-bottom: 15px;
+                    @media screen and (max-width: 576px) {
+                        margin-bottom: 10px;
+                    }
+                }
+                p {
+                    text-align: left!important;
+                }
+                textarea {
+                    background-color: transparent!important;
+                    width: 100%!important;
+                    min-height: 150px!important;
+                    border: none!important;
+                    padding: 0!important;
+                    @include font-level-3;
+                    color: $black;
+                    border-radius: 0;
+                    @media screen and (max-width: 576px) {
+                        min-height: 130px;
+                    }
+                }
+                .custom-select {
+                    background-color: $white;
+                    width: 100%;
+                    @include font-level-3;
+                    color: $black;
+                    border: none;
+                }
+            }
+            &.three-cards {
+                gap: 10px;
+                .card-bd {
+                    width: calc((100% / 3) - 7px);
+                    @media screen and (max-width: 1000px) {
+                        width: 100%;
+                    }
+                }
+            }
+            &.one-card {
+                .card-bd {
+                    width: 100%;
+                }
+            }
+        }
+        .collapse-bd {
+            width: 100%;
+            .contentcollapse-bd {
+                .card-bd {
+                    position: relative;
+                    width: 100%!important;
+                    margin-bottom: 10px;
+                    min-height: auto;
+                    h5 {
+                        a {
+                            color: $aqua-green;
+                            text-transform: none;
+                        }
+                    }
+                    .menu-action-bd {
+                        position: absolute;
+                        top: 15px;
+                        right: 15px;
+                        .action-menu-trigger {
+                            .dropdown-toggle {
+                                background-color: $white;
+                            }
+                        }
+                    }
+                }
+            }
+            .respuesta-elac {
+                width: 100%;
+                min-height: auto;
+                background-color: $yellow;
+                margin-bottom: 35px;
+                @media screen and (max-width: 576px) {
+                    margin-bottom: 25px;
+                }
+                p {
+                    min-width: 100%;
+                }
+                ul {
+                    padding-left: 22px;
+                    margin-bottom: 0;
+                    li {
+                        margin-bottom: 15px;
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
+                    }
+                }
+            }
+        }
+        &.accordion-table-bd {
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+            .title-card-bd {
+                background-image: url(/campus/base/img/dropdown-icon.png);
+                background-repeat: no-repeat;
+                background-size: 35px auto;
+                background-position: right 15px top 15px;
+                text-align: left!important;
+                font-weight: 400;
+                line-height: 130%;
+                padding: 20px 20% 20px 40px;
+                @media screen and (max-width: 576px) {
+                    padding: 20px 20% 20px 15px;
+                }
+                cursor: pointer;
+                &.icon-collapse {
+                    background-image: url(/campus/base/img/dropdown-collapse-icon.png);
+                }
+            }
+        }
+        &.file-type-bd {
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 5px 35px 5px;
+            border-top: 1px solid #838383;
+            @media screen and (max-width: 576px) {
+                padding: 0 0 25px 0;
+            }
+            &:last-child {
+                border-bottom: 1px solid #838383;
+            }
+            .user-content-bd {
+                margin: 30px 0 20px 0;
+                @media screen and (max-width: 576px) {
+                    margin: 25px 0 15px 0;
+                }
+            }
+            .content-file {
+                display: flex;
+                align-items: center;
+                background-color: $gray-2;
+                padding: 10px;
+                @include border-radius-4;
+                a {
+                    @include font-level-3;
+                    font-weight: 700;
+                    color: $aqua-green;
+                    text-decoration: underline;
+                    &:hover {
+                        color: $black;
+                    }
+                }
+                .icon {
+                    width: 35px;
+                    height: 35px;
+                    margin-right: 5px;
+                    @media screen and (max-width: 576px) {
+                        width: 22px;
+                        height: 22px;
+                        margin-right: 2px;
+                    }
+                }
+            }
+        }
+        &:last-of-type {
+            &.file-type-bd {
+                margin-bottom: 65px;
+                @media screen and (max-width: 576px) {
+                    margin-bottom: 25px;
+                }
+            }
+        }
+    }
+    #content-table-bd {
+        .content-file {
+            max-width: 800px;
+            margin: 0 auto 45px auto;
+            @media screen and (max-width: 576px) {
+                margin-bottom: 35px;
+            }
+            .mod-data-input {
+                .filemanager-container.card {
+                    min-height: 350px;
+                    @media screen and (max-width: 576px) {
+                        min-height: 150px;
+                    }
+                }
+            }
+            .inline-req {
+                display: none;
+            }
+        }
+    }
+    // Estilos cuestionarios
+    &.path-mod-quiz {
+        #page {
+            .main-inner {
+                #page-content {
+                    div[role=main] {
+                        min-height: 50vh;
+                        padding-top: 0!important;
+                        max-width: 1200px!important;
+                        .btn-primary {
+                            @include button(primary);
+                        }
+                        .btn-secondary {
+                            @include button(secondary);
+                        }
+                        .quizreviewsummary {
+                            display: none;
+                        }
+                        .quizinfo {
+                            display: none;
+                            margin-top: 30px;
+                            p {
+                                max-width: 100%!important;
+                            }
+                        }
+                        .quizattemptcounts {
+                            display: none;
+                            margin-bottom: 25px;
+                            a {
+                                @include font-level-3;
+                            }
+                        }
+                        .table-responsive {
+                            display: none;
+                        }
+                        .quizattempt {
+                            display: none;
+                        }
+                        .quizstartbuttondiv {
+                            width: 100%;
+                            display: flex;
+                            justify-content: center;
+                            .btn-primary {
+                                @include button(secondary);
+                            }
+                        }
+                        h3 {
+                            display: none;
+                            @include font-level-2;
+                        }
+                        .multichoice {
+                            .info {
+                                display: none;
+                            }
+                            .content {
+                                margin-left: 0;
+                                p {
+                                    text-align: left!important;
+                                    max-width: 100%!important;
+                                }
+                                .formulation {
+                                    background-color: $gray-2;
+                                    padding: 55px 65px;
+                                    @include border-radius-2;
+                                    @media screen and (max-width: 768px) {
+                                        padding: 15px;
+                                    }
+                                    .qtext {
+                                        background-color: $white;
+                                        margin-bottom: 0!important;
+                                        padding: 45px 55px 0 55px;
+                                        @include border-radius-3;
+                                        border-bottom-left-radius: 0;
+                                        border-bottom-right-radius: 0;
+                                        @media screen and (max-width: 768px) {
+                                            padding: 25px 15px 0 15px;
+                                            border-bottom-left-radius: 0;
+                                            border-bottom-right-radius: 0;
+                                        }
+                                        p {
+                                            font-weight: 700!important;
+                                            &:last-child {
+                                                margin-bottom: 0!important;
+                                            }
+                                        }
+                                    }
+                                    fieldset {
+                                        margin-top: 0;
+                                        margin-bottom: 0;
+                                        background-color: $white;
+                                        padding: 35px 55px 45px 55px;
+                                        @include border-radius-3;
+                                        border-top-left-radius: 0;
+                                        border-top-right-radius: 0;
+                                        @media screen and (max-width: 768px) {
+                                            padding: 25px 15px 35px 15px;
+                                            border-top-left-radius: 0;
+                                            border-top-right-radius: 0;
+                                        }
+                                        .answer {
+                                            @include font-level-3;
+                                            >div {
+                                                margin: 0 0 15px 0;
+                                                &:last-child {
+                                                    margin-bottom: 0;
+                                                }
+                                                p {
+                                                    margin-bottom: 0!important;
+                                                    width: 100%;
+                                                }
+                                                input[type="checkbox"] {
+                                                    cursor: pointer;
+                                                    -webkit-appearance: none;
+                                                    appearance: none;
+                                                    font: inherit;
+                                                    width: 20px;
+                                                    height: 20px;
+                                                    border: 2px solid $black;
+                                                    margin-right: 15px;
+                                                    border-radius: 50%;
+                                                    @media screen and (max-width: 1025px) {
+                                                        width: 15px;
+                                                        height: 15px;
+                                                    }
+                                                    @media screen and (max-width: 768px) {
+                                                        margin-right: 10px;
+                                                    }
+                                                    &:checked {
+                                                        background-color: $aqua-green;
+                                                    }
+                                                }
+                                                .answernumber {
+                                                    min-width: auto;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    .im-controls {
+                                        .submit.btn.btn-secondary {
+                                            @include button(primary);
+                                        }
+                                    }
+                                }
+                                .outcome {
+                                    background-color: $gray-2;
+                                    padding: 55px 65px;
+                                    @include border-radius-2;
+                                    @media screen and (max-width: 768px) {
+                                        padding: 15px;
+                                    }
+                                    .feedback {
+                                        background-color: $yellow;
+                                        padding: 45px 55px;
+                                        @include border-radius-3;
+                                        margin-bottom: 0;
+                                        @media screen and (max-width: 768px) {
+                                            padding: 25px 15px;
+                                        }
+                                        .specificfeedback,
+                                        .numpartscorrect,
+                                        .rightanswer {
+                                            display: none;
+                                        }
+                                        .generalfeedback {
+                                            margin-bottom: 0;
+                                            p {
+                                                &:last-child {
+                                                    margin-bottom: 0!important;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .submitbtns {
+                            .mod_quiz-next-nav {
+                                @include button(secondary);
+                            }
+                        }
+                        .quizattemptsummary {
+                            @include font-level-3;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    // Estilos Glosario
+    &.path-mod-glossary {
+        #page {
+            .main-inner {
+                #page-content {
+                    div[role=main] {
+                        .entrybox {
+                            hr {
+                                display: none;
+                            }
+                            .glossarycategoryheader {
+                                display: none;
+                            }
+                            .glossarypost {
+                                width: 100%;
+                                border-bottom: 1px solid #727272;
+                                padding-bottom: 10px;
+                                margin-bottom: 25px;
+                                @media screen and (max-width: 576px) {
+                                    margin-bottom: 20px;
+                                }
+                                &:first-of-type {
+                                    padding-top: 25px;
+                                    border-top: 1px solid #727272;
+                                    @media screen and (max-width: 576px) {
+                                        padding-top: 20px;
+                                    }
+                                }
+                                .entry {
+                                    .concept {
+                                        h4 {
+                                            @include font-level-3;
+                                            margin-bottom: 0;
+                                        }
+                                    }
+                                    p {
+                                        max-width: 100%!important;
+                                        text-align: left!important;
+                                    }
+                                    .attachments,
+                                    .simple-translate-system-theme {
+                                        display: none;
+                                    }
+                                }
+                                .entrylowersection {
+                                    .aliases {
+                                        display: none;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    // Aplica estilos cuando se desactiva el modo edición.
+    &:not(.editing) {
+        //&.editing{
+        .drawer-left,
+        .drawer-right,
+        .drawer {
+            display: none !important;
+        }
+        #page {
+            .main-inner {
+                #page-header,
+                .secondary-navigation {
+                    display: none;
+                }
+                #page-content {
+                    div[role=main] {
+                        .modified {
+                            display: none;
+                        }
+                    }
+                }
+                .drawer-toggles,
+                .drawer-toggles .drawer-toggler {
+                    display: none!important;
+                }
+            }
+            &.show-drawer-left,
+            &.show-drawer-right {
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+        }
+        &:not(.path-mod-data,
+        .path-mod-quiz) {
+            #page {
+                .main-inner {
+                    #page-content {
+                        .activity-header {
+                            display: none!important;
+                        }
+                    }
+                }
+            }
+        }
+        // Estilos libreta
+        &.base-libreta {
+            #page-wrapper {
+                #page {
+                    .main-inner {
+                        background-image: url(/campus/base/img/libreta_bg_pattern.jpg);
+                        background-repeat: repeat;
+                        background-size: 400px auto;
+                        border-radius: 0;
+                        border-bottom: 2px solid #e4e4e4;
+                        @media screen and (max-width: 768px) {
+                            background-size: 300px auto;
+                            border-bottom: 1px solid #e4e4e4;
+                        }
+                        #page-content {
+                            #region-main {
+                                background-color: transparent;
+                                div[role=main] {
+                                    padding-top: 0;
+                                    hr {
+                                        display: none!important;
+                                    }
+                                    .tertiary-navigation {
+                                        display: none!important;
+                                    }
+                                    h2 {
+                                        @include font-level-1;
+                                        font-weight: 700;
+                                        color: $black;
+                                        text-align: center;
+                                        width: 100%;
+                                        max-width: 800px;
+                                        margin: 0 auto 30px auto;
+                                        @media screen and (max-width: 576px) {
+                                            margin-bottom: 20px;
+                                        }
+                                    }
+                                    .d-inline-flex {
+                                        width: 100%;
+                                        .mod-data-input {
+                                            width: 100%;
+                                            margin-bottom: 30px;
+                                            @media screen and (max-width: 576px) {
+                                                margin-bottom: 20px;
+                                            }
+                                        }
+                                    }
+                                    .datapreferences {
+                                        margin-top: 0!important;
+                                        form {
+                                            &#options {
+                                                display: none!important;
+                                            }
+                                        }
+                                    }
+                                    .box {
+                                        display: flex;
+                                        flex-wrap: wrap;
+                                        justify-content: space-between;
+                                        padding-top: 0!important;
+                                        .post-it {
+                                            display: flex;
+                                            flex-wrap: wrap;
+                                            background-color: $yellow;
+                                            width: 48%;
+                                            height: fit-content;
+                                            padding: 25px 45px 45px 45px;
+                                            margin: 0 auto 4% auto;
+                                            @media screen and (max-width: 768px) {
+                                                width: 100%;
+                                                margin-bottom: 35px;
+                                            }
+                                            @media screen and (max-width: 576px) {
+                                                padding: 18px 25px 25px 25px;
+                                                margin-bottom: 20px;
+                                            }
+                                            p {
+                                                @include font-level-3;
+                                                font-weight: 400;
+                                                color: $black;
+                                                max-width: 100%;
+                                                text-align: left;
+                                                margin-bottom: 25px;
+                                                @media screen and (max-width: 576px) {
+                                                    margin-bottom: 15px;
+                                                }
+                                                &:last-child {
+                                                    margin-bottom: 0;
+                                                }
+                                            }
+                                            .menu-action {
+                                                width: 100%!important;
+                                                .entry-actionsmenu {
+                                                    display: flex;
+                                                    justify-content: end;
+                                                    margin-bottom: 15px;
+                                                    @media screen and (max-width: 576px) {
+                                                        margin-bottom: 10px;
+                                                    }
+                                                    .dropdown-toggle {
+                                                        background-color: $white;
+                                                    }
+                                                }
+                                            }
+                                            .user-info-bd {
+                                                width: 100%;
+                                                margin-bottom: 20px;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Estilos específicos en añadir entrada BD  
+#page-mod-data-edit {
+    .activity-header {
+        display: none!important;
+    }
+    div[role=main] {
+        .box {
+            display: block!important;
+            .post-it {
+                width: 100%!important;
+            }
+        }
+        h2:first-of-type {
+            display: none;
+        }
+        .activity-heading {
+            padding-top: 65px;
+            @media screen and (max-width: 576px) {
+                padding-top: 35px;
+            }
+        }
+    }
+}
+
+
+/* ------------------------------------------------------------ */
