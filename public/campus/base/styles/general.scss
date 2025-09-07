@@ -116,12 +116,19 @@ h3 {
     display: none !important;
 } */
 
-
-// Recurso Página
-#page-mod-page-view {
-    #page-content {
-        h3 {
-            color: $violet;
+.back {
+    a {
+        font-family: 'Piepie W01 Regular';
+        color: $blue;
+        font-size: 1.5rem;
+        text-decoration: none;
+        &:hover {
+            color: $pink;
+        }
+        &:focus {
+            box-shadow: none;
+            outline: 0;
+            background-color: transparent;
         }
     }
 }
@@ -138,6 +145,11 @@ li.section {
                 a {
                     color: $black;
                     font-size: 2.5rem;
+                    &:focus {
+                        box-shadow: none;
+                        outline: 0;
+                        background-color: transparent;
+                    }
                 }
             }
         }
@@ -231,6 +243,30 @@ li.section {
             .page-header-headings {
                 h1 {
                 font-size: 4rem;
+                }
+            }
+        }
+    }
+}
+
+
+//SECCIONES
+#page-course-view-section-topics {
+    #page {
+        background-color: $violet;
+        .main-inner {
+            background-color: white;
+            #page-header {
+                .page-header-headings {
+                    h1 {
+                        font-size: 3rem;
+                    }
+                }
+            }
+            div[role="main"] {
+                background-color: white;
+                .section-item {
+                    background-color: white;
                 }
             }
         }
