@@ -1,0 +1,238 @@
+/* THEME STYLES */
+
+// Font import
+@import url(https://db.onlinewebfonts.com/c/f22b66fd8208f04c026f2ddd89468cb5?family=Piepie+W01+Regular);
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+// Normalize
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: "Inter", sans-serif !important;
+}
+
+// Theme Colors
+$secondary: #FFEC00;
+$black: #464646;
+$gray-1: #EFEFEF;
+$gray-2: #CBCBCB;
+$gray-3: #4E4F50;
+$white: #ffffff;
+$blue: #0091FC;
+$violet: #A74CFB;
+$orange: #FF7F00;
+$pink: #FF22CC;
+$light-pink: #ff22cb;
+$green: #00FF81;
+$light-green: #98FFE1;
+$yellow: #FFEC00;
+
+
+// Buttons
+/* @mixin button($variant: primary) {
+    box-sizing: border-box;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 0 15px;
+    height: 35px;
+    border-radius: 5px;
+    font-family: "Noto Sans", sans-serif;
+    display: inline-block;
+    align-content: center;
+    ;
+    &:focus {
+        box-shadow: none;
+    }
+    &:hover {
+        background-color: $violet;
+    }
+    &:active {
+        transform: scale(.95);
+    }
+    @if $variant==primary {
+        background-color: $violet;
+        color: white;
+        border: none;
+    }
+    @if $variant==secondary {
+        background-color: transparent;
+        color: $gray-3;
+        border: 1px solid $violet;
+        &:hover {
+            background-color: $gray-1;
+        }
+    }
+} */
+
+
+
+// PUBLICIDAD
+ins {
+    display: none !important;
+}
+#mys-wrapper {
+    display: none !important;
+}
+
+// General Styles
+
+#page-content,
+#lambda-incourse-header,
+.wrapper-lambda .back {
+    max-width: 1000px !important;
+    margin: auto;
+    width: 100%;
+}
+
+.back {
+    max-width: 1000px !important;
+    margin: auto;
+    width: 100%;
+}
+
+
+
+.destacado {
+    background-color: #F4F1FF;
+    padding: 2rem;
+    margin-bottom: 1rem;
+}
+
+h1,
+h2,
+h3 {
+    font-family: "Piepie W01 Regular", sans-serif;
+    color: $black !important;
+    font-weight: normal !important;
+}
+
+/* .section-navigation.navigationtitle {
+    display: none !important;
+} */
+
+
+// Recurso Página
+#page-mod-page-view {
+    #page-content {
+        h3 {
+            color: $violet;
+        }
+    }
+}
+
+li.section {
+    .section-item {
+    background-color: white;
+        .course-section-header {
+            a.btn-icon {
+                color: white;
+                background-color: $blue;
+            }
+            h3.sectionname {
+                a {
+                    color: $black;
+                    font-size: 2.5rem;
+                }
+            }
+        }
+    }
+    
+    li.activity {
+        border-top: initial;
+        &:nth-child(3n+1) {
+            .activity-item {
+            border: 4px solid $violet;
+            background-color: white;                
+            }
+        }
+
+        &:nth-child(3n+2) {
+            .activity-item {
+            border: 4px solid $orange;
+            background-color: white;
+            }
+        }
+
+        &:nth-child(3n) {
+            .activity-item {
+            border: 4px solid $blue;
+            background-color: white;
+            }
+        }
+        .activity-name-area {
+            .activityname {
+                a {
+                    font-weight: 900;
+                    color: $black;
+                    font-size: 1.1rem;
+                    &:focus {
+                        box-shadow: none;
+                        outline: 0;
+                        background-color: transparent;
+                    }
+                }
+            }
+        }
+        .activity-completion {
+            .btn-subtle-body {
+                background-color: $gray-2;
+            }
+            .btn-subtle-success {
+                background-color: $green;
+            }
+        }
+        .activity-description {
+            border-top: initial;
+            
+                    img {
+                        max-width: 100%;
+                    }
+          
+        }
+    }
+
+}
+
+// HOME
+#page-course-view-topics {
+    #page {
+        background-color: $pink;
+        padding-top: 50px;
+        .secondary-navigation {
+        .moremenu {
+        background-color: $secondary;
+        border-bottom: initial;
+            .nav {
+            background-color: $secondary;
+                .nav-link {
+                font-weight: 700;
+                color: $black;
+                }
+                .nav-link:hover {
+                background-color: $gray-2;
+                }
+            }
+        }
+        }
+        #region-main {
+        background-color: $secondary;
+        }
+        .main-inner {
+            max-width: 1000px !important;
+            margin: auto;
+            //width: 100%;
+            background-color: $yellow !important;
+            .page-header-headings {
+                h1 {
+                font-size: 4rem;
+                }
+            }
+        }
+    }
+}
