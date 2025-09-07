@@ -88,7 +88,106 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+// Boton volver
+document.addEventListener("DOMContentLoaded", function() {
+    let body = document.body;
 
+    //SI estamos en la portada del curso
+    if (body.classList.contains('pagelayout-course')) {
+        /**
+         * Función para colapsar todas las secciones del curso excepto la primera válida
+         */
+
+        if (document.body.classList.contains('editing')) return;
+
+        const allSections = document.querySelectorAll('ul.topics li.course-section');
+
+        let firstValidSection = null;
+
+        // Encontrar la primera sección válida que no sea section-0 ni tenga .separate
+        for (const section of allSections) {
+            if (section.id !== 'section-0' && !section.querySelector('.separate')) {
+                firstValidSection = section;
+                break;
+            }
+        }
+
+        // Iterar sobre todas las secciones
+        allSections.forEach(section => {
+            // Si contiene un .separate, marcar la sección como separador
+            if (section.querySelector('.separate')) {
+                section.classList.add('section-divider');
+            }
+
+            const content = section.querySelector('.course-content-item-content');
+            const link = section.querySelector('a.icons-collapse-expand');
+            if (section === firstValidSection || section.id == "section-0") {
+                // Expandir la primera sección válida
+                if (content) content.classList.add('show');
+
+                if (link) {
+                    link.classList.remove('collapsed');
+                    link.setAttribute('aria-expanded', 'true');
+                }
+            } else {
+                // Colapsar todas las demás
+                if (content) content.classList.remove('show');
+
+                if (link) {
+                    if (!link.classList.contains('collapsed')) {
+                        link.classList.add('collapsed');
+                    }
+
+                    link.setAttribute('aria-expanded', 'false');
+                }
+            }
+
+            //Numeradores para los separadores
+            const divider_number = [...document.querySelectorAll('li.section-divider')].reverse();
+
+            divider_number.forEach((el, index) => {
+                el.style.setProperty('--count', `'${index + 1}'`);
+            });
+        });
+
+    } else {        
+
+        const breadcrumb = document.querySelector('.breadcrumb');
+
+        if (breadcrumb) {
+            const firstBreadcrumbItem = breadcrumb.querySelector('li.breadcrumb-item a');
+
+            if (firstBreadcrumbItem) {
+                let href = firstBreadcrumbItem.getAttribute('href');
+                const title = firstBreadcrumbItem.getAttribute('title');
+
+                // 2. Crear el nuevo elemento <div class="back"><a ...>← Volver</a></div>
+                const backDiv = document.createElement('div');
+                backDiv.className = 'back';
+
+                const backLink = document.createElement('a');
+                href = href.split('#')[0];
+
+                backLink.href = href;
+
+                backLink.title = title;
+                backLink.textContent = '← Volver';
+
+                backDiv.appendChild(backLink);
+
+                // 3. Insertar div.back al principio del elemento con id="topofscroll"
+                const pageContent = document.querySelector('#page-content');
+
+                if (pageContent && pageContent.parentNode) {
+                    pageContent.parentNode.insertBefore(backDiv, pageContent);
+                }
+            }
+        }
+
+    
+    }
+   
+});
 
 // ABRIR LOS RECURSOS URL EN VENTANA NUEVA
 document.addEventListener("DOMContentLoaded", function() {
