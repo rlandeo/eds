@@ -112,44 +112,6 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
 
-        // Iterar sobre todas las secciones
-        allSections.forEach(section => {
-            // Si contiene un .separate, marcar la sección como separador
-            if (section.querySelector('.separate')) {
-                section.classList.add('section-divider');
-            }
-
-            const content = section.querySelector('.course-content-item-content');
-            const link = section.querySelector('a.icons-collapse-expand');
-            if (section === firstValidSection || section.id == "section-0") {
-                // Expandir la primera sección válida
-                if (content) content.classList.add('show');
-
-                if (link) {
-                    link.classList.remove('collapsed');
-                    link.setAttribute('aria-expanded', 'true');
-                }
-            } else {
-                // Colapsar todas las demás
-                if (content) content.classList.remove('show');
-
-                if (link) {
-                    if (!link.classList.contains('collapsed')) {
-                        link.classList.add('collapsed');
-                    }
-
-                    link.setAttribute('aria-expanded', 'false');
-                }
-            }
-
-            //Numeradores para los separadores
-            const divider_number = [...document.querySelectorAll('li.section-divider')].reverse();
-
-            divider_number.forEach((el, index) => {
-                el.style.setProperty('--count', `'${index + 1}'`);
-            });
-        });
-
     } else {        
 
         const breadcrumb = document.querySelector('.breadcrumb');
@@ -171,7 +133,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 backLink.href = href;
 
                 backLink.title = title;
-                backLink.textContent = '← Volver';
+                backLink.textContent = '< Volver';
 
                 backDiv.appendChild(backLink);
 
@@ -182,11 +144,8 @@ document.addEventListener("DOMContentLoaded", function() {
                     pageContent.parentNode.insertBefore(backDiv, pageContent);
                 }
             }
-        }
-
-    
-    }
-   
+        }    
+    }   
 });
 
 // ABRIR LOS RECURSOS URL EN VENTANA NUEVA
